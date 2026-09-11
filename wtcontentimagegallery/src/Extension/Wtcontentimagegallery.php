@@ -1,7 +1,7 @@
 <?php
 /**
  * @package       WT Content Image gallery
- * @version       1.2.3.1
+ * @version       1.3.0
  * @Author        Sergey Tolkachyov, https://web-tolk.ru
  * @copyright     Copyright (C) 2023 Sergey Tolkachyov
  * @license       GNU/GPL http://www.gnu.org/licenses/gpl-3.0.html
@@ -20,6 +20,11 @@ use function defined;
 
 defined('_JEXEC') or die;
 
+/**
+ * Content plugin for rendering WT Content Image Gallery shortcodes.
+ *
+ * @since  1.0.0
+ */
 class Wtcontentimagegallery extends CMSPlugin implements SubscriberInterface
 {
     /**
@@ -31,15 +36,21 @@ class Wtcontentimagegallery extends CMSPlugin implements SubscriberInterface
      */
     protected $autoloadLanguage = true;
 
+    /**
+     * Current gallery instance counter for template identifiers.
+     *
+     * @var    integer
+     *
+     * @since  1.0.0
+     */
     public $iterator = 0;
 
     /**
-     * @inheritDoc
+     * Returns an array of events this subscriber will listen to.
      *
-     * @return string[]
+     * @return  array
      *
-     * @throws \Exception
-     * @since 4.1.0
+     * @since   4.1.0
      *
      */
     public static function getSubscribedEvents(): array
@@ -52,8 +63,9 @@ class Wtcontentimagegallery extends CMSPlugin implements SubscriberInterface
 
 
     /**
+     * Replace gallery shortcodes in prepared content with rendered gallery markup.
      *
-     * @param ContentPrepareEvent $event
+     * @param   ContentPrepareEvent  $event  The content prepare event.
      *
      * @return  void
      *
@@ -110,13 +122,16 @@ class Wtcontentimagegallery extends CMSPlugin implements SubscriberInterface
     }
 
     /**
-     * @param $matches array Matches array from preg_match_all
-     * @param $context string Context string like <b>com_content.article</b>
-     * @param $row object Article object
-     * @param $type int Type 1 - shortcode <b>without tmpl</b> param, type 2 - <b>with tmpl</b> param
+     * Process gallery shortcode matches and replace them with the selected layout output.
      *
+     * @param   array    $matches  Matches array from preg_match_all().
+     * @param   string   $context  Context string like com_content.article.
+     * @param   object   $row      Article object.
+     * @param   integer  $type     Shortcode body index: 1 for shortcode without tmpl, 2 for shortcode with tmpl.
      *
-     * @since 1.0.0
+     * @return  void
+     *
+     * @since   1.0.0
      */
     public function processImages($matches, $context, &$row, $type = 2): void
     {

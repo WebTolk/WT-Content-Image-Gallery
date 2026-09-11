@@ -1,7 +1,8 @@
 <?php
+
 /**
  * @package       WT Content Image gallery
- * @version       1.2.3.1
+ * @version       1.3.0
  * @Author        Sergey Tolkachyov, https://web-tolk.ru
  * @copyright     Copyright (C) 2023 Sergey Tolkachyov
  * @license       GNU/GPL http://www.gnu.org/licenses/gpl-3.0.html
@@ -10,15 +11,26 @@
 
 namespace Joomla\Plugin\Content\Wtcontentimagegallery\Fields;
 
-defined('_JEXEC') or die;
+\defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Field\NoteField;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Factory;
 
+/**
+ * Form field that displays WebTolk plugin information.
+ *
+ * @since  1.0.0
+ */
 class PlugininfoField extends NoteField
 {
-
+	/**
+	 * Field type name.
+	 *
+	 * @var    string
+	 *
+	 * @since  1.0.0
+	 */
 	protected $type = 'Plugininfo';
 
 	/**
@@ -31,7 +43,6 @@ class PlugininfoField extends NoteField
 	 */
 	protected function getInput()
 	{
-			
 		$data    = $this->form->getData();
 		$element = $data->get('element');
 		$folder  = $data->get('folder');
@@ -44,7 +55,7 @@ class PlugininfoField extends NoteField
 
 		$wt_plugin_info = simplexml_load_file(JPATH_SITE . "/plugins/" . $folder . "/" . $element . "/" . $element . ".xml");
 
-		return $html = '<div class="d-flex shadow p-4">
+		return $html = '</div><div class="d-flex shadow p-4">
 			<div class="flex-shrink-0">
 				<a href="https://web-tolk.ru" target="_blank">
 					<svg class="plugin-info-img-svg" width="200" height="50" xmlns="http://www.w3.org/2000/svg">
@@ -64,21 +75,21 @@ class PlugininfoField extends NoteField
 			</div>
 			<div class="flex-grow-1 ms-3">
 				<span class="badge bg-success text-white">v.' . $wt_plugin_info->version . '</span>
-				' . Text::_($wt_plugin_info->description) . '
+				' . Text::_('PLG_' . strtoupper($element) . '_DESC') . '
 			</div>
-		</div>';
+		</div><div>';
 	}
 
 	/**
+	 * Method to get the field label markup.
+	 *
 	 * @return  string  The field label markup.
 	 *
 	 * @since   1.7.0
 	 */
 	protected function getLabel()
 	{
-
-		return '';
-
+		return ' ';
 	}
 
 	/**
@@ -92,7 +103,4 @@ class PlugininfoField extends NoteField
 	{
 		return $this->getLabel();
 	}
-
 }
-
-?>

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+  "name": "plg_editors-xtd_wtcontentimagegalleryeditorsxtd",
+  "version": "1.3.0",
+  "description": "WT Content Image Gallery editors-xtd assets",
+  "license": "GPL-3.0-or-later",
+  "namespace": "Joomla\\Plugin\\EditorsXtd\\Wtcontentimagegalleryeditorsxtd\\WebAsset",
+  "assets": [
+    {
+      "name": "wtcontentimagegalleryeditorsxtd.modal",
+      "type": "script",
+      "class": "ModalAssetItem",
+      "uri": "plg_editors-xtd_wtcontentimagegalleryeditorsxtd/wtcontentimagegalleryeditorsxtd.js",
+      "dependencies": [
+        "core",
+        "bootstrap.tab"
+      ],
+      "attributes": {
+        "defer": true
+      }
+    }
+  ]
+}

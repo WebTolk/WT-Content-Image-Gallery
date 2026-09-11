@@ -1,0 +1,39 @@
+{
+  "name": "pkg_wtcontentimagegallery",
+  "version": "1.3.0",
+  "root": "..",
+  "packageDir": ".packages",
+  "stageDir": ".packages/.stage",
+  "packageNamePattern": "{name}_{version}.zip",
+  "textExtensions": [
+    "php",
+    "xml",
+    "ini",
+    "json",
+    "md",
+    "txt",
+    "yml",
+    "yaml",
+    "js"
+  ],
+  "exclude": [
+    ".pf/",
+    ".codex/",
+    ".secrets/",
+    ".playwright-mcp/",
+    "*.candidate"
+  ],
+  "replace": {
+    "versionDocblock": true,
+    "versionXml": true,
+    "versionPackageJson": false,
+    "dateDocblock": true,
+    "dateXml": true,
+    "creationDateXml": true,
+    "author": false,
+    "authorEmail": false,
+    "link": false,
+    "package": false,
+    "copyright": false
+  }
+}

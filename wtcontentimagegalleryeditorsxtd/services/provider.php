@@ -1,7 +1,7 @@
 <?php
 /**
  * @package       WT Content Image gallery
- * @version       1.2.3.1
+ * @version       1.3.0
  * @Author        Sergey Tolkachyov, https://web-tolk.ru
  * @copyright     Copyright (C) 2023 Sergey Tolkachyov
  * @license       GNU/GPL http://www.gnu.org/licenses/gpl-3.0.html
@@ -34,7 +34,7 @@ return new class () implements ServiceProviderInterface {
             PluginInterface::class,
             function (Container $container) {
                 $subject = $container->get(DispatcherInterface::class);
-                $config  = (array) PluginHelper::getPlugin('system', 'wtcontentimagegalleryeditorsxtd');
+                $config  = (array) PluginHelper::getPlugin('editors-xtd', 'wtcontentimagegalleryeditorsxtd');
                 $plugin = new Wtcontentimagegalleryeditorsxtd($subject, $config);
                 $plugin->setApplication(Factory::getApplication());
                 return $plugin;
